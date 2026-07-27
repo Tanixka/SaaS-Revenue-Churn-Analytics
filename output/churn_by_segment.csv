@@ -1,0 +1,13 @@
+segment_value,customers,churned,Churn_rate,segment_type
+Month-to-month,3875,1655,42.71,Contract
+One year,1473,166,11.27,Contract
+Two year,1695,48,2.83,Contract
+0-6 mo,1481,784,52.94,Tenure
+13-24 mo,1024,294,28.71,Tenure
+25-48 mo,1594,325,20.39,Tenure
+49+ mo,2239,213,9.51,Tenure
+7-12 mo,705,253,35.89,Tenure
+Bank transfer (automatic),1544,258,16.71,PaymentMethod
+Credit card (automatic),1522,232,15.24,PaymentMethod
+Electronic check,2365,1071,45.29,PaymentMethod
+Mailed check,1612,308,19.11,PaymentMethod

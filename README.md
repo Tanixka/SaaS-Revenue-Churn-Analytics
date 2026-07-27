@@ -1,2 +1,20 @@
 # SaaS Revenue & Churn Analytics
-SaaS-style revenue & churn analytics on subscriber data — MRR, churn segmentation, cohort retention, and LTV analysis, built end-to-end in pandas with a Tableau dashboard.
+
+Analyzing subscriber data (MRR, churn drivers, cohort retention, LTV) 
+to identify where a subscription business is losing revenue and why.
+
+## Data
+Telco Customer Churn dataset (IBM), reframed as a SaaS subscriber base —
+tenure = months as customer, MonthlyCharges = per-customer MRR, 
+Contract = plan type.
+
+## Status
+🚧 In progress
+
+## Phases
+- [x] Phase 1 — Data cleaning
+- [ ] Phase 2 — MRR
+- [ ] Phase 3 — Churn by segment
+- [ ] Phase 4 — Cohort retention
+- [ ] Phase 5 — LTV
+- [ ] Phase 6 — Tableau dashboard

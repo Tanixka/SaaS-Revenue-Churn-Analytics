@@ -49,7 +49,7 @@ mrr_by_contract = active.groupby("Contract")["MonthlyCharges"].sum().reset_index
 mrr_by_contract.columns = ["Contract", "MRR"]
 
 # print(mrr_by_contract)
-
+mrr_by_contract.to_csv("output/mrr_by_segment.csv", index=False)
 ## CALCULATING CHURN RATE PER CONTRACT
 
 churn_contract = df.groupby("Contract").agg(
@@ -212,3 +212,14 @@ ltv_all = ltv_all[["segment_type", "segment_value", "avg_monthly_charge", "churn
 ltv_all.to_csv("output/ltv_by_segment.csv", index=False)
 
 # print(ltv_all)
+
+
+##SUMMARY
+
+kpis = pd.DataFrame([
+    {"metric": "Total MRR", "value": round(total_mrr, 2)},
+    {"metric": "Total ARR", "value": round(total_arr, 2)},
+    {"metric": "Overall Churn Rate (%)", "value": round(df["Churn"].mean() *100, 2)}
+])
+
+kpis.to_csv("output/summary_kpis.csv", index = False)

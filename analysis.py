@@ -132,8 +132,8 @@ df["cohort_month"] = df["tenure"].apply(signup_month)
 cohort_rows = []
 
 for i, (_, row) in enumerate(df.iterrows()):
-    if i % 1000 == 0:
-        print(f"Processing row {i}...")
+    # if i % 1000 == 0:
+        # print(f"Processing row {i}...")
     
     cohort = row["cohort_month"]
     tenure = row["tenure"]
@@ -145,7 +145,7 @@ for i, (_, row) in enumerate(df.iterrows()):
         retained = 1 if m <= last_active_month else 0
         cohort_rows.append((cohort, m, retained))
 
-print("Loop done, building DataFrame...")
+# print("Loop done, building DataFrame...")
 cohort_df = pd.DataFrame(cohort_rows, columns = ["cohort_month", "months_since_signup", "retained"])
 
 # print(cohort_df.shape)
@@ -179,3 +179,36 @@ cohort_summary = cohort_summary[cohort_summary["months_since_signup"] <= 24]
 cohort_summary.to_csv("output/cohort_retention.csv", index=False)
 
 # print(df[df["cohort_month"]=="2020-01"]["tenure"].unique()) #oldest retained customers 
+
+
+##Calculating LTV
+
+ltv_contract = df.groupby("Contract").agg(
+    avg_monthly_charge = ("MonthlyCharges", "mean"),
+    churn_rate = ("Churn", "mean")
+).reset_index()
+
+ltv_contract["estimated_ltv"] = (ltv_contract["avg_monthly_charge"] / ltv_contract["churn_rate"]).round(2)
+
+# print(ltv_contract)
+
+ltv_payment = df.groupby("PaymentMethod").agg(
+    avg_monthly_charge = ("MonthlyCharges", "mean"),
+    churn_rate = ("Churn", "mean")
+).reset_index()
+
+ltv_payment["estimated_ltv"] = (ltv_payment["avg_monthly_charge"] / ltv_payment["churn_rate"]).round(2)
+
+# print(ltv_payment)
+
+ltv_contract = ltv_contract.rename(columns={"Contract": "segment_value"})
+ltv_contract["segment_type"] = "Contract"
+
+ltv_payment = ltv_payment.rename(columns= {"PaymentMethod":"segment_value"})
+ltv_payment["segment_type"] = "PaymentMethod"
+
+ltv_all = pd.concat([ltv_contract, ltv_payment], ignore_index=True)
+ltv_all = ltv_all[["segment_type", "segment_value", "avg_monthly_charge", "churn_rate", "estimated_ltv"]]
+ltv_all.to_csv("output/ltv_by_segment.csv", index=False)
+
+# print(ltv_all)

@@ -9,7 +9,11 @@ tenure = months as customer, MonthlyCharges = per-customer MRR,
 Contract = plan type.
 
 ## Status
-🚧 In progress — Phase 5 of 6 complete
+✅ Complete
+
+## Dashboard
+[View live dashboard on Tableau Public](https://public.tableau.com/views/SaaSRevenueChurnAnalytics_17852571990350/SaaSChurnDashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 
 ## Phases
 - [x] Phase 1 — Data cleaning
@@ -17,7 +21,7 @@ Contract = plan type.
 - [x] Phase 3 — Churn by segment
 - [x] Phase 4 — Cohort retention
 - [x] Phase 5 — LTV
-- [ ] Phase 6 — Tableau dashboard
+- [x] Phase 6 — Tableau dashboard
 
 ## Key Findings
 - Total MRR: $316,985.75 | ARR: $3,803,829.00
@@ -26,6 +30,7 @@ Contract = plan type.
 - Electronic check payers churn at 45.29%, ~3x the rate of automatic payment methods (15-17%) — a correlation worth flagging, though the dataset can't confirm why
 - LTV by contract: Month-to-month ($155) vs Two year ($2,146) — a 14x difference, driven almost entirely by churn rate rather than price
 - Electronic check payers have the lowest LTV ($168) despite the highest average monthly charge ($76/mo) — high churn cancels out the higher per-month revenue
+- Overall: Revenue is concentrated in the riskiest segment (Month-to-month, highest MRR but also highest churn), while automatic-payment, long-contract customers are both stickier and more valuable per customer — suggesting the highest-leverage retention move is converting month-to-month customers toward annual contracts and automatic payment methods
 
 
 ## Note on Cohort Analysis

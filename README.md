@@ -15,7 +15,7 @@ Contract = plan type.
 - [x] Phase 1 — Data cleaning
 - [x] Phase 2 — MRR
 - [x] Phase 3 — Churn by segment
-- [ ] Phase 4 — Cohort retention
+- [x] Phase 4 — Cohort retention
 - [ ] Phase 5 — LTV
 - [ ] Phase 6 — Tableau dashboard
 
@@ -24,3 +24,7 @@ Contract = plan type.
 - Month-to-month contracts are the largest revenue segment ($136,447 MRR), ahead of Two year ($98,840) and One year ($81,698)
 - Churn is heavily concentrated in Month-to-month contracts (42.71%) and the first 6 months of tenure (52.94%) — both point to the same underlying risk: customers who haven't committed long-term or aren't yet "settled" are the most likely to leave
 - Electronic check payers churn at 45.29%, ~3x the rate of automatic payment methods (15-17%) — a correlation worth flagging, though the dataset can't confirm why
+
+
+## Note on Cohort Analysis
+This dataset provides only a snapshot in time (tenure as of one moment), not real signup dates or ongoing history. Cohorts here are reconstructed by working backward from tenure, which means customers in the same cohort share nearly identical tenure values by construction. As a result, this chart is better read as a "survival curve by tenure length" (when do customers with a given tenure tend to churn) rather than true calendar-time retention tracking (which would require watching the same real cohort's behavior diverge over following months). This also means the oldest cohort label (e.g. 2020-01) isn't really "one signup month" — it's a pile-up of every customer at the dataset's maximum tenure value (72 months), since tenure appears to be capped in this dataset. In a production dataset with real signup timestamps, this analysis would show gradual divergence within each cohort instead of the flat-then-drop pattern seen here.

@@ -13,7 +13,7 @@ Contract = plan type.
 
 ## Dashboard
 
-![Dashboard](output\SaaS Churn Dashboard.png)
+![Dashboard](output/SaaS%20Churn%20Dashboard.png)
 [View live dashboard on Tableau Public](https://public.tableau.com/views/SaaSRevenueChurnAnalytics_17852571990350/SaaSChurnDashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 
